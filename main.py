@@ -75,6 +75,10 @@ def process_coin(coin_name):
     elif response.status_code == 200:
         parser = CoinMarketCapParser(coin_name)
         parser.feed(data_text)
+    elif response.status_code == 404:
+        print(coin_name+" palautti 404 virheen")
+    else:
+        print("MUU VIRHE kolikossa: "+coin_name+" Virhekoodi: "+str(response.status_code))
     #print(coin_name + " - OK")
     #except urllib.error.HTTPError:
     #    # Tätä kolikkoa ei löytynyt
